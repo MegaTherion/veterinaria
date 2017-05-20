@@ -1,0 +1,57 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Historial
+ *
+ * @ORM\Table(name="historial", indexes={@ORM\Index(name="fk_Historial_Mascota1_idx", columns={"Mascota_id"})})
+ * @ORM\Entity
+ */
+class Historial
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="date", nullable=true)
+     */
+    private $fecha;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="motivo_atencion", type="text", length=65535, nullable=true)
+     */
+    private $motivoAtencion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="diagnostico", type="text", length=65535, nullable=true)
+     */
+    private $diagnostico;
+
+    /**
+     * @var \Mascota
+     *
+     * @ORM\ManyToOne(targetEntity="Mascota")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Mascota_id", referencedColumnName="id")
+     * })
+     */
+    private $mascota;
+
+
+}
+

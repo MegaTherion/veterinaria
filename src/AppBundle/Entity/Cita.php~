@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Cita
+ *
+ * @ORM\Table(name="cita", indexes={@ORM\Index(name="fk_Cita_Mascota1_idx", columns={"Mascota_id"})})
+ * @ORM\Entity
+ */
+class Cita
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_atencion", type="date", nullable=true)
+     */
+    private $fechaAtencion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="proxima_cita", type="date", nullable=true)
+     */
+    private $proximaCita;
+
+    /**
+     * @var \Mascota
+     *
+     * @ORM\ManyToOne(targetEntity="Mascota")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Mascota_id", referencedColumnName="id")
+     * })
+     */
+    private $mascota;
+
+
+}
+
