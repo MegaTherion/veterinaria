@@ -1,0 +1,58 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_title %}
+    Mascotas
+{% endblock %}
+
+{% block page_content %}
+
+<div class="box">
+    <div class="box-body">
+        
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Fechanacimiento</th>
+                <th>Peso</th>
+                <th>Edad</th>
+                <th>Color</th>
+                <th>Especie</th>
+                <th>Raza</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mascotum in mascotas %}
+            <tr>
+                <td><a href="{{ path('mascota_show', { 'id': mascotum.id }) }}">{{ mascotum.id }}</a></td>
+                <td>{{ mascotum.nombre }}</td>
+                <td>{% if mascotum.fechaNacimiento %}{{ mascotum.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ mascotum.peso }}</td>
+                <td>{{ mascotum.edad }}</td>
+                <td>{{ mascotum.color }}</td>
+                <td>{{ mascotum.especie }}</td>
+                <td>{{ mascotum.raza }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('mascota_show', { 'id': mascotum.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('mascota_edit', { 'id': mascotum.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+</div>
+
+  
+            <a class="btn btn-primary" href="{{ path('mascota_new') }}">Nueva mascota</a>
+      
+{% endblock %}

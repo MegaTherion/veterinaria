@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Mascotum</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mascotum.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ mascotum.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Fechanacimiento</th>
+                <td>{% if mascotum.fechaNacimiento %}{{ mascotum.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Peso</th>
+                <td>{{ mascotum.peso }}</td>
+            </tr>
+            <tr>
+                <th>Edad</th>
+                <td>{{ mascotum.edad }}</td>
+            </tr>
+            <tr>
+                <th>Color</th>
+                <td>{{ mascotum.color }}</td>
+            </tr>
+            <tr>
+                <th>Especie</th>
+                <td>{{ mascotum.especie }}</td>
+            </tr>
+            <tr>
+                <th>Raza</th>
+                <td>{{ mascotum.raza }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('mascota_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('mascota_edit', { 'id': mascotum.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

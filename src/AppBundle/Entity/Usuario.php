@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * Usuario
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="usuario")
  * @ORM\Entity
  */
-class Usuario
+class Usuario extends BaseUser
 {
     /**
      * @var integer
@@ -19,7 +20,7 @@ class Usuario
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -155,5 +156,11 @@ class Usuario
     public function getTelefono()
     {
         return $this->telefono;
+    }
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
     }
 }
