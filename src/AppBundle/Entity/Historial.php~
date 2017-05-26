@@ -53,5 +53,110 @@ class Historial
     private $mascota;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fecha
+     *
+     * @param \DateTime $fecha
+     *
+     * @return Historial
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    /**
+     * Get fecha
+     *
+     * @return \DateTime
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    /**
+     * Set motivoAtencion
+     *
+     * @param string $motivoAtencion
+     *
+     * @return Historial
+     */
+    public function setMotivoAtencion($motivoAtencion)
+    {
+        $this->motivoAtencion = $motivoAtencion;
+
+        return $this;
+    }
+
+    /**
+     * Get motivoAtencion
+     *
+     * @return string
+     */
+    public function getMotivoAtencion()
+    {
+        return $this->motivoAtencion;
+    }
+
+    /**
+     * Set diagnostico
+     *
+     * @param string $diagnostico
+     *
+     * @return Historial
+     */
+    public function setDiagnostico($diagnostico)
+    {
+        $this->diagnostico = $diagnostico;
+
+        return $this;
+    }
+
+    /**
+     * Get diagnostico
+     *
+     * @return string
+     */
+    public function getDiagnostico()
+    {
+        return $this->diagnostico;
+    }
+
+    /**
+     * Set mascota
+     *
+     * @param \AppBundle\Entity\Mascota $mascota
+     *
+     * @return Historial
+     */
+    public function setMascota(\AppBundle\Entity\Mascota $mascota = null)
+    {
+        $this->mascota = $mascota;
+
+        return $this;
+    }
+
+    /**
+     * Get mascota
+     *
+     * @return \AppBundle\Entity\Mascota
+     */
+    public function getMascota()
+    {
+        return $this->mascota;
+    }
+}

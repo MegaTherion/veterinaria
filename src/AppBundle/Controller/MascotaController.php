@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Ps\PdfBundle\Annotation\Pdf;
 
 /**
  * Mascotum controller.
@@ -15,6 +17,30 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class MascotaController extends Controller
 {
+    /**
+     * @Pdf()
+     * @Route("/verpdf/{id}")
+     */
+    public function showpdfAction(Mascota $mascota)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $citas = $em->createQuery('SELECT c from AppBundle:Cita c where c.mascota = ?1')
+                    ->setParameter(1, $mascota)
+                    ->getResult();
+        //$format = $this->get('request')->get('_format');
+        $facade = $this->get('ps_pdf.facade');
+        $response = new Response();
+        $this->render('AppBundle:Mascota:show.pdf.twig', array( 'mascota' => $mascota, 'citas'=>$citas), $response);
+
+        $xml = $response->getContent();
+
+        $content = $facade->render($xml);
+
+        return new Response($content, 200, array('content-type' => 'application/pdf'));
+
+        
+    }
+
     /**
      * Lists all mascotum entities.
      *
@@ -40,11 +66,12 @@ class MascotaController extends Controller
      */
     public function newAction(Request $request)
     {
-        $mascotum = new Mascotum();
+        $mascotum = new Mascota();
         $form = $this->createForm('AppBundle\Form\MascotaType', $mascotum);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $mascotum->setUsuario($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($mascotum);
             $em->flush();
@@ -68,7 +95,13 @@ class MascotaController extends Controller
     {
         $deleteForm = $this->createDeleteForm($mascotum);
 
+        $em = $this->getDoctrine()->getManager();
+        $citas = $em->createQuery('SELECT c from AppBundle:Cita c where c.mascota = ?1')
+                    ->setParameter(1, $mascotum)
+                    ->getResult();
+
         return $this->render('mascota/show.html.twig', array(
+            'citas' =>$citas,
             'mascotum' => $mascotum,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -134,4 +167,7 @@ class MascotaController extends Controller
             ->getForm()
         ;
     }
+
+    
+
 }

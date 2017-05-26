@@ -5,24 +5,17 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
-class MascotaType extends AbstractType
+class CitaType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')
-                ->add('fechaNacimiento', BirthdayType::class)
-                ->add('peso')
-                ->add('edad')
-                ->add('color')
-                ->add('especie')
-                ->add('raza')
-            // ->add('usuario')
-            ;
+        $builder->add('fechaAtencion')->add('proximaCita')
+                // ->add('mascota')
+                ->add('veterinario');
     }
     
     /**
@@ -31,7 +24,7 @@ class MascotaType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Mascota'
+            'data_class' => 'AppBundle\Entity\Cita'
         ));
     }
 
@@ -40,7 +33,7 @@ class MascotaType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_mascota';
+        return 'appbundle_cita';
     }
 
 

@@ -80,6 +80,12 @@ class Mascota
      */
     private $usuario;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumn(name="veterinario_id", referencedColumnName="id")
+     */
+     private $veterinario;
+
 
 
     /**
@@ -282,5 +288,33 @@ class Mascota
     public function getUsuario()
     {
         return $this->usuario;
+    }
+
+    /**
+     * Set veterinario
+     *
+     * @param \AppBundle\Entity\Usuario $veterinario
+     *
+     * @return Mascota
+     */
+    public function setVeterinario(\AppBundle\Entity\Usuario $veterinario = null)
+    {
+        $this->veterinario = $veterinario;
+
+        return $this;
+    }
+
+    /**
+     * Get veterinario
+     *
+     * @return \AppBundle\Entity\Usuario
+     */
+    public function getVeterinario()
+    {
+        return $this->veterinario;
+    }
+
+    public function __toString() {
+        return $this->nombre;
     }
 }

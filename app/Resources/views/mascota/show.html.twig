@@ -1,8 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
 
-{% block body %}
-    <h1>Mascotum</h1>
+{% block page_title %}
+    {{ mascotum.nombre }}
+{% endblock %}
 
+{% block page_content %}
+
+    <div class="box">
+        <div class="box-body">
+            
+        
     <table>
         <tbody>
             <tr>
@@ -15,7 +22,7 @@
             </tr>
             <tr>
                 <th>Fechanacimiento</th>
-                <td>{% if mascotum.fechaNacimiento %}{{ mascotum.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if mascotum.fechaNacimiento %}{{ mascotum.fechaNacimiento|date('d/m/Y') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Peso</th>
@@ -40,9 +47,26 @@
         </tbody>
     </table>
 
+        <h2>Citas</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>Fecha de consulta</th>
+                <th>Proxima cita</th>
+                <th>Veterinario</th>
+            </tr>
+            {% for cita in citas %}
+            <tr>
+                <td>{{ cita.fechaAtencion|date('d/m/Y') }}</td>
+                <td>{{ cita.proximaCita|date('d/m/Y') }}</td>
+                <td>{{ cita.veterinario }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>
     <ul>
         <li>
-            <a href="{{ path('mascota_index') }}">Back to the list</a>
+            <a href="{{ path('mascota_index') }}">Regresar a la lista</a>
         </li>
         <li>
             <a href="{{ path('mascota_edit', { 'id': mascotum.id }) }}">Edit</a>

@@ -46,5 +46,86 @@ class Enfermedades
     private $mascota;
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     *
+     * @return Enfermedades
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set sintomas
+     *
+     * @param string $sintomas
+     *
+     * @return Enfermedades
+     */
+    public function setSintomas($sintomas)
+    {
+        $this->sintomas = $sintomas;
+
+        return $this;
+    }
+
+    /**
+     * Get sintomas
+     *
+     * @return string
+     */
+    public function getSintomas()
+    {
+        return $this->sintomas;
+    }
+
+    /**
+     * Set mascota
+     *
+     * @param \AppBundle\Entity\Mascota $mascota
+     *
+     * @return Enfermedades
+     */
+    public function setMascota(\AppBundle\Entity\Mascota $mascota = null)
+    {
+        $this->mascota = $mascota;
+
+        return $this;
+    }
+
+    /**
+     * Get mascota
+     *
+     * @return \AppBundle\Entity\Mascota
+     */
+    public function getMascota()
+    {
+        return $this->mascota;
+    }
+}

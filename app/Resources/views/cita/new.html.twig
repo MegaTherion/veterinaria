@@ -1,0 +1,39 @@
+{% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
+
+{% block page_title %}
+    Nueva cita para <span class="text-success">{{ mascota.nombre }}</span>
+{% endblock %}
+
+{% block flash_messages %}
+
+    
+    
+{% endblock %}
+
+{% block page_content %}
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            
+{% for flash_message in app.session.flashBag.get('danger') %}
+        <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Error!</h4>
+                    {{ flash_message}}
+        </div>
+    {% endfor %}
+    
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-primary" type="submit" value="Create" />
+    {{ form_end(form) }}
+
+        </div>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('cita_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

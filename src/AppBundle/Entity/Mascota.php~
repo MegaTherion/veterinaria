@@ -80,6 +80,237 @@ class Mascota
      */
     private $usuario;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumn(name="veterinario_id", referencedColumnName="id")
+     */
+     private $veterinario;
 
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return Mascota
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set fechaNacimiento
+     *
+     * @param \DateTime $fechaNacimiento
+     *
+     * @return Mascota
+     */
+    public function setFechaNacimiento($fechaNacimiento)
+    {
+        $this->fechaNacimiento = $fechaNacimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaNacimiento
+     *
+     * @return \DateTime
+     */
+    public function getFechaNacimiento()
+    {
+        return $this->fechaNacimiento;
+    }
+
+    /**
+     * Set peso
+     *
+     * @param float $peso
+     *
+     * @return Mascota
+     */
+    public function setPeso($peso)
+    {
+        $this->peso = $peso;
+
+        return $this;
+    }
+
+    /**
+     * Get peso
+     *
+     * @return float
+     */
+    public function getPeso()
+    {
+        return $this->peso;
+    }
+
+    /**
+     * Set edad
+     *
+     * @param integer $edad
+     *
+     * @return Mascota
+     */
+    public function setEdad($edad)
+    {
+        $this->edad = $edad;
+
+        return $this;
+    }
+
+    /**
+     * Get edad
+     *
+     * @return integer
+     */
+    public function getEdad()
+    {
+        return $this->edad;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     *
+     * @return Mascota
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set especie
+     *
+     * @param string $especie
+     *
+     * @return Mascota
+     */
+    public function setEspecie($especie)
+    {
+        $this->especie = $especie;
+
+        return $this;
+    }
+
+    /**
+     * Get especie
+     *
+     * @return string
+     */
+    public function getEspecie()
+    {
+        return $this->especie;
+    }
+
+    /**
+     * Set raza
+     *
+     * @param string $raza
+     *
+     * @return Mascota
+     */
+    public function setRaza($raza)
+    {
+        $this->raza = $raza;
+
+        return $this;
+    }
+
+    /**
+     * Get raza
+     *
+     * @return string
+     */
+    public function getRaza()
+    {
+        return $this->raza;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \AppBundle\Entity\Usuario $usuario
+     *
+     * @return Mascota
+     */
+    public function setUsuario(\AppBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \AppBundle\Entity\Usuario
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set veterinario
+     *
+     * @param \AppBundle\Entity\Usuario $veterinario
+     *
+     * @return Mascota
+     */
+    public function setVeterinario(\AppBundle\Entity\Usuario $veterinario = null)
+    {
+        $this->veterinario = $veterinario;
+
+        return $this;
+    }
+
+    /**
+     * Get veterinario
+     *
+     * @return \AppBundle\Entity\Usuario
+     */
+    public function getVeterinario()
+    {
+        return $this->veterinario;
+    }
 }
-

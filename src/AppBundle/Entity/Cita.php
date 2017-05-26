@@ -45,6 +45,12 @@ class Cita
      */
     private $mascota;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumn(name="veterinario_id", referencedColumnName="id")
+     */
+     private $veterinario;
+
 
 
     /**
@@ -127,5 +133,29 @@ class Cita
     public function getMascota()
     {
         return $this->mascota;
+    }
+
+    /**
+     * Set veterinario
+     *
+     * @param \AppBundle\Entity\Usuario $veterinario
+     *
+     * @return Cita
+     */
+    public function setVeterinario(\AppBundle\Entity\Usuario $veterinario = null)
+    {
+        $this->veterinario = $veterinario;
+
+        return $this;
+    }
+
+    /**
+     * Get veterinario
+     *
+     * @return \AppBundle\Entity\Usuario
+     */
+    public function getVeterinario()
+    {
+        return $this->veterinario;
     }
 }

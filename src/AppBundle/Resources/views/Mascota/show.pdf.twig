@@ -1,0 +1,21 @@
+<pdf>
+    <dynamic-page>
+        Hello {{ mascota.nombre }}!
+
+        <table>
+        	<tr>
+                <td>Fecha de consulta</td>
+                <td>Proxima cita</td>
+                <td>Veterinario</td>
+            </tr>
+            {% for cita in citas %}
+            <tr>
+                <td>{{ cita.fechaAtencion|date('d/m/Y') }}</td>
+                <td>{{ cita.proximaCita|date('d/m/Y') }}</td>
+                <td>{{ cita.veterinario }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+       
+    </dynamic-page>
+</pdf>

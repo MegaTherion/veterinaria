@@ -35,14 +35,11 @@
                 <td>{{ mascotum.especie }}</td>
                 <td>{{ mascotum.raza }}</td>
                 <td>
-                    <ul>
-                        <li>
+                    
                             <a href="{{ path('mascota_show', { 'id': mascotum.id }) }}">show</a>
-                        </li>
-                        <li>
+                        
                             <a href="{{ path('mascota_edit', { 'id': mascotum.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                        <a class="btn btn-xs btn-success" href="{{ path('cita_new',{'id':mascotum.id}) }}">Registrar cita</a>
                 </td>
             </tr>
         {% endfor %}
